@@ -1,0 +1,72 @@
+﻿{% extends "layout.html" %}
+{% block content %}
+<script type="text/javascript">
+function comment(){
+    if($.trim($("input[name='c_name']").val()).length == 0 || $.trim($("textarea[name='c_comment']").val()).length == 0){
+        alert("不能为空");
+    }
+    else{
+        $.ajax({
+            type: "POST",
+            url: "/log_comment",
+            data: $("form").serialize(),
+            success: function(msg){
+                $(':input','form')
+                    .not(':button, :submit, :reset, :hidden')
+                    .val('')
+                    .removeAttr('checked')
+                    .removeAttr('selected');
+                location.reload();
+                //alert(msg);
+            }
+        });
+    }
+}
+</script>
+
+
+<blockquote><h4>正 文</h4></blockquote>
+<div class="row">
+<div class="span9">
+<h4>{{ team_log_detail["title"] }}</h4>
+</div>
+<div class="span9 team_log">
+
+    {{ team_log_detail["content"] }}
+
+</div>
+
+<div class="span6">
+    <code>阅读({{ team_log_detail["scan"] }})</code>┊ <code>评论 ({{ log_comment_count }})</code> 
+</div>
+<hr />
+<div class="span9">
+<div class="conment">评论</div>
+    {% for i in log_comment %}
+    <div class="conment-detail">
+        <h6>来自IP：{{ i["username"] }}</h6>
+        {{ i["comment"] }}
+        <h6>{{ i["create_time"] }}</h6>
+    </div>
+    {% endfor %}
+
+</div>
+<div class="span9">
+
+    <div class="conment">发评论</div>
+    <form>
+        <input name="log_id" type="hidden" value="{{ team_log_detail['id'] }}"/>
+        <input name="c_name" type="hidden" value="{{ ctx.ip }}" />
+        <label>你的评论：</label>
+        <textarea name="c_comment" class="conment-textarea"  rows="4"></textarea>
+        <p>
+        <input class="btn btn-primary" type="button" onclick="comment()" value="发评论"/>
+        <input type="button" onclick="history.go(-1);" value="返回" class="btn btn-danger"/>
+        </p>
+    </form>
+</div>
+
+
+</div>
+{% endblock %}
+

@@ -1,0 +1,31 @@
+﻿{% extends "layout.html" %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="/static/cxcalendar/cxcalendar.css" />
+<script type="text/javascript" src="/static/cxcalendar/jquery-2.1.js"></script>
+<script type="text/javascript" src="/static/cxcalendar/cxcalendar.js"></script>
+<script type="text/javascript" src="/static/cxcalendar/cxcalendar.languages.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.date_slect').cxCalendar();
+
+});
+</script>
+
+
+
+
+
+<blockquote><h4>{{ schedule_detail["match_time"] }} 比赛详情</h4></blockquote>
+<div>
+    <p>比赛球队：<b>{{ schedule_detail["teams"] }}</b></p>
+    <p>比赛类别：<b>{{ schedule_detail["match_type"] }}</b></p>
+    <p>比赛结果：<b>{{ schedule_detail["match_result"] }}</b></p>
+    <p>比赛详情：</p>
+    <div class="pre">{{ schedule_detail["match_detail"] }}</div>
+
+</div>
+<input type="button" onclick="history.go(-1);" value="返回" class="btn btn-danger"/>
+
+{% endblock %}
+

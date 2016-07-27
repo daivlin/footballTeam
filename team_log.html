@@ -1,0 +1,35 @@
+﻿{% extends "layout.html" %}
+{% block content %}
+<script type="text/javascript" src="/static/ckeditor/ckeditor.js"></script><!--引用ckeditor-->
+
+<blockquote><h4>日志 ● 话题</h4></blockquote>
+<div class="log-list">
+{% if team_log != "" %}
+<ul class="nav nav-tabs nav-stacked">
+{% for i in team_log %}
+    <li><a href="/log_detail?log_id={{ i['id'] }}"><i class="icon-file"></i>{{ i["title"][:30] }}</a></li>
+{% endfor %}
+
+</ul>
+
+{{ page_html }}
+
+{% else %}
+<div class="alert alert-info">没有相关信息</div>
+{% endif %}
+<div class="conment">发起话题</div>
+<form action="/team_log" method="post">
+    <label>主题</label>
+    <input type="text" name="log_title" />
+    <label>内容</label>
+    <textarea rows="40" cols="100" name="log_content"></textarea>
+    <script type="text/javascript">
+        CKEDITOR.replace('log_content');
+    </script>
+    <input class="btn btn-primary" type="submit" value="发起话题" />
+</form>
+
+</div>
+
+{% endblock %}
+

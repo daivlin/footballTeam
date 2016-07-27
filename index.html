@@ -1,0 +1,41 @@
+﻿{% extends "layout.html" %}
+{% block content %}
+<script type="text/javascript">
+function next_pic(){
+    location.reload();
+}
+</script>
+
+<blockquote><h4>球 讯</h4></blockquote>
+{% if schedule[0] %}
+        <table class="table table-hover">
+        {% for i in schedule %}
+            {% if i["match_time"] > "2016-04-17 11:00" %}
+            
+            <tr>
+                <td>{{ i["match_time"] }}</td>
+                <td>{{ i["teams"] }}</td>
+                <td>{{ i["location"] }}</td>
+                <td>{{ i["match_type"] }}</td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+        </table>
+{% else %}
+    <div class="alert alert-info">暂时没有比赛</div>
+{% endif %}
+<blockquote><h4>风 采</h4></blockquote>
+<div class="row">
+{% for i in team_picture_list[:4] %}
+        <div class="span8 index_img">     
+            <img class="" src="{{ team_picture_dir + i }}" />
+        </div>
+{% endfor %}
+   <div>    
+        <ul class="pager">
+          <li><a onclick="next_pic()">刷新</a></li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+

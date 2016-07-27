@@ -1,0 +1,77 @@
+{% extends "layout.html" %}
+{% block content %}
+<blockquote><h4>队 员</h4></blockquote>
+
+<div class="tabbable"> <!-- Only required for left/right tabs -->
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#tab1" data-toggle="tab">队 务</a></li>
+        <li><a href="#tab2" data-toggle="tab">球员名录</a></li>
+        <li><a href="#tab3" data-toggle="tab">出勤情况</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="tab1">
+            {% for i in member_manage %}
+            <div class="row member-card">
+                <div class="span2">
+                    <code>{{ i["manage"] }}</code>
+                    <img src="{{ gravatar_dir + i['header_name']}}.jpg" class="img-polaroid">
+                </div>
+                <div class="offset1 span5">
+                    <p>姓名：<span class="name">{{ i["name"] }}</span></p>
+                    <p>球衣号：<span class="remind">{{ i["number"] }}</span></p>
+                    <p>年龄：{{ i["age"] }}</p>
+                    <p>身高：{{ i["height"] }}</p>
+                    <p>技能：{{ i["ability"] }}</p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="tab-pane" id="tab2">
+            {% for i in member %}
+            <div class="row member-card">
+                <div class="span2">
+                    <code>{{ grade_dict[i["grade"]] }}</code>
+                    <img src="{{ gravatar_dir + i['header_name']}}.jpg" class="img-polaroid">
+                </div>
+                <div class="offset1 span5">
+                    <p>姓名：<span class="name">{{ i["name"] }}</span></p>
+                    <p>球衣号：<span class="remind">{{ i["number"] }}</span></p>
+                    <p>年龄：{{ i["age"] }}</p>
+                    <p>身高：{{ i["height"] }}</p>
+                    <p>技能：{{ i["ability"] }}</p>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <div class="tab-pane" id="tab3">
+        <a href="/static/score_table.xlsx" class="btn">积分详情表下载</a>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th width="80">球衣号码</th>
+                        <th>球员</th>
+                        <th>位置</th>
+                        <th>单位</th>
+                        <th>积分</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for i in member_score %}
+                    <tr>
+                        <td>{{ i["number"] }}</td>
+                        <td>{{ i["name"] }}</td>
+                        <td>{{ grade_dict[i["grade"]] }}</td>
+                        <td>{{ i["company"] }}</td>
+                        <td>{{ i["score"] }}</td>
+                    </tr>
+                {% endfor %}
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+

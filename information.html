@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+{% block content %}
+<blockquote><h4>足球资讯</h4></blockquote>
+<div class="log-list">
+<ul class="nav nav-tabs nav-stacked">
+{% for i in content %}
+    <li><a href="{{ i[0] }}" target="_blank"><i class="icon-hand-right"></i>{{ i[1] }}</a></li>
+{% endfor %}
+
+</ul>
+</div>
+{% endblock %}
+

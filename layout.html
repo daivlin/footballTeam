@@ -1,0 +1,63 @@
+<!doctype html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <title>FootballTeam</title>
+        <link rel="stylesheet" type="text/css" href="/static/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" type="text/css" href="/static/index.css">
+        <script type="text/javascript" src="/static/bootstrap/js/jquery.js"></script>
+        <script type="text/javascript" src="/static/bootstrap/js/bootstrap.js"></script>
+        
+        <style type="text/css">
+            .bold{
+                font-weight:bold;
+            }
+        </style>
+        
+        <link rel="icon" href="/static/favicon.ico" type="image/x-icon"/>
+        <link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon"/>
+        <link rel="Bookmark" href="/static/favicon.ico" />
+        
+    </head>
+    <body>
+    <div class="container">
+        <div class="hero-unit header">
+            <h2>{{ team_infor["team_name"] }}</h2>
+            <p>{{ team_infor["slogan"] }}</p>
+            <p>
+            </p>
+        </div>
+        <div class="row">
+            <div class="span3">
+                <ul class="nav nav-tabs nav-stacked">
+                    <li><a href="/"><i class="icon-home"></i>首页</a></li>
+                    <li><a href="/about"><i class="icon-book"></i>球队介绍</a></li>
+                    <li><a href="/member"><i class="icon-user"></i>球员名录</a></li>
+                    <li><a href="/schedule"><i class="icon-calendar"></i>比赛日历</a></li>
+                    <li><a href="/team_log"><i class="icon-comment"></i>日志与话题</a></li>
+                    <li><a href="/information"><i class="icon-list"></i>足球资讯</a></li>
+                </ul>
+            </div>
+            <div class="span9 content">
+            {% block content %}
+            {% endblock %}
+            </div>
+        </div>            
+        <hr />
+        <div class="span12">
+            <div class="foot">
+                Copyright © 2016 Daivlin , All Rights Reserved.<br/>
+                你是第<code>{{ visitor_count() }}</code>位访客。<br/><br/>
+            </div>
+        </div>
+    </div>
+    
+ 	<script type="text/javascript">
+        //设置active类样式
+        var pathname = window.location.pathname;
+        $("a[href='"+pathname+"']").parent().attr("class","active bold");
+    </script>       
+    
+    
+    </body>
+</html>

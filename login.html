@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>配网基础资料---后台登录</title>
+    <link rel="stylesheet" href="/static/bootstrap/css/bootstrap.min.css" type="text/css" >
+    <link rel="stylesheet" href="/static/css/index.css" type="text/css" >
+    
+    <script type="text/javascript" src="/static/js/jquery.js"></script>
+    <script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
+    <link rel="Bookmark" href="favicon.ico" />
+    
+    <style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #f5f5f5;
+      }
+
+      .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 0 auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+    .form-signin-heading{
+        color:#009999;
+    }
+    </style>    
+    
+    
+    
+    
+</head>
+<body>
+
+<div class="container">
+
+<form class="form-signin" method="post" action="/login" >
+    <h2 class="form-signin-heading">网站后台登录</h2>
+    <label for="name">用户名</label>
+    <input name="userName" type="text" class="input-block-level" id="name">
+    <label for="password">密码</label>
+    <input name="password" type="password" class="input-block-level" id="password">
+    <input class="btn btn-large btn-primary" type="submit" value="登录">
+</form>
+
+</div>
+
+
+</body>
+</html>
