@@ -1,0 +1,40 @@
+﻿{% extends "admin_base.html"%}
+{% block content %}
+<script type="text/javascript" src="/static/ckeditor/ckeditor.js"></script><!--引用ckeditor-->
+
+<blockquote><h4>赛程</h4></blockquote>
+<input type="button" value=" 新 增 " onclick="location.href='/admin/schedule_add'" class="btn btn-primary"/> 
+{% if schedule[0] %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th width="100">时间</th>
+            <th width="120">球队</th>
+            <th width="100">衣服</th>
+            <th width="120">地点</th>
+            <th>类别</th>
+            <th>结果</th>
+            <th>管理</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in schedule %}
+            <tr>
+                <td>{{ i["match_time"] }}</td>
+                <td>{{ i["teams"] }}</td>
+                <td>{{ i["clothes"] }}</td>
+                <td>{{ i["location"] }}</td>
+                <td>{{ i["match_type"] }}</td>
+                <td>{{ i["match_result"] if i["match_result"] else "<span class='label label-info'>未开始</span>" }}</td>
+                <td><a href="/admin/schedule_edit?s_id={{ i['id'] }}"><i class="icon-edit"></i></a></td>
+            </tr>
+            
+        {% endfor %}
+
+    </tbody>        
+</table>    
+{% else %}
+    <div class="alert alert-info">暂时没有比赛</div>
+{% endif %}
+    
+{% endblock content %}

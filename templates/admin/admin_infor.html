@@ -1,0 +1,31 @@
+﻿{% extends "admin_base.html"%}
+{% block content %}
+<script type="text/javascript" src="/static/ckeditor/ckeditor.js"></script><!--引用ckeditor-->
+
+<blockquote><h4>关于球队</h4></blockquote>
+<div class="admin-about11" >
+    <form action="/admin/infor_edit" method="post">
+        <label>队名</label>
+        <input type="text" name="team_name" value="{{ team_infor['team_name'] }}">
+        <hr />
+        
+        <label>口号</label>
+        <input type="text" name="slogan" value="{{ team_infor['slogan'] }}">
+        <hr />
+        
+        <label>球队介绍</label>
+        <textarea rows="40" cols="100" name="infor" id="infor">{{ team_infor['infor'] }}</textarea>
+        <script type="text/javascript">
+            CKEDITOR.replace('infor');
+        </script>
+        <hr />
+        <label>队规</label>
+        <textarea rows="80" cols="100" name="rules" id="rules">{{ team_infor['rules'] }}</textarea>
+        <script type="text/javascript">
+            CKEDITOR.replace('rules');
+        </script>
+        <hr />
+        <input type="submit" name="sub" value="更新" class="btn btn-primary">
+    </form>
+</div>
+{% endblock content %}

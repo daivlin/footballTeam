@@ -1,0 +1,67 @@
+﻿{% extends "admin_base.html"%}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="/static/cxcalendar/cxcalendar.css" />
+<script type="text/javascript" src="/static/cxcalendar/jquery-2.1.js"></script>
+<script type="text/javascript" src="/static/cxcalendar/cxcalendar.js"></script>
+<script type="text/javascript" src="/static/cxcalendar/cxcalendar.languages.js"></script>
+
+<script type="text/javascript" src="/static/ckeditor/ckeditor.js"></script><!--引用ckeditor-->
+
+<script type="text/javascript">
+$(document).ready(function(){
+    /*全局设置*/
+    $.cxCalendar.defaults.type = "datetime"; 
+    $.cxCalendar.defaults.format = "YYYY-MM-DD HH:mm"; 
+
+    $('.date_slect').cxCalendar();
+
+});
+</script>
+
+<blockquote><h4>赛程编辑</h4></blockquote>
+   
+<form method="post" action="/admin/schedule_edit" >
+    <input type="hidden" name="s_id" value={{ s_id }} />
+    <div>
+        <label>比赛时间:</label>
+        <input class="date_slect" name="match_time" type="text" value="{{ schedule['match_time'] }}" /></td>
+    </div>
+    <div>
+        <label>比赛球队:</label>
+        <input name="teams" type="text" value="{{ schedule['teams'] }}"  /></td>
+    </div>
+
+    <div>
+        <label>比赛地点:</label>
+        <input name="location" type="text" value="{{ schedule['location'] }}"  /></td>
+    </div>
+
+    <div>
+        <label>球服:</label>
+        <input name="clothes" type="text" value="{{ schedule['clothes'] }}"  /></td>
+    </div>
+    <div>
+        <label>比赛类型:</label>
+        <input name="match_type" type="text" value="{{ schedule['match_type'] }}"  /></td>
+    </div>
+    <div>
+        <label>比赛结果:</label>
+        <input name="match_result" type="text" value="{{ schedule['match_result'] }}"  />
+    </div>
+    <div>
+        <label>比赛详情:</label>
+        <textarea rows="80" cols="100" name="match_detail" id="match_detail">{{ schedule['match_detail'] }}</textarea>
+        <script type="text/javascript">
+            CKEDITOR.replace('match_detail');
+        </script>
+        
+    </div>
+    <div>
+        <input type="submit" name="button" value="更新" id="update" class="btn btn-primary"/> |
+        <input type="button" onclick="history.go(-1);" value="返回" class="btn"/>
+    </div>
+</form>
+    
+    
+{% endblock content %}

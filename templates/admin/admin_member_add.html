@@ -1,0 +1,66 @@
+﻿{% extends "admin_base.html" %}
+{% block content %}
+<blockquote><h4>新增球员</h4></blockquote>
+<form method="post" action="/admin/member_add" enctype="multipart/form-data">    
+    <div>
+        <label>姓名</label>
+        <input name="name" type="text" />
+    </div>
+    <div>
+        <label>号码</label>
+        <input name="number" type="text" />
+    </div>
+    <div>
+        <label>年龄</label>
+        <input name="age" type="text"/>
+    </div>
+    <div>
+        <label>身高</label>
+        <input name="height" type="text" />
+    </div>
+    <div>
+        <label>电话</label>
+        <input name="tel" type="text" />
+    </div>    
+    <div>
+        <label>技能</label>
+        <input name="ability" type="text" />
+    </div>
+    <div>
+        <label>位置</label>
+        <select name="grade">
+            <option value="1" selected="selected">前锋</option>
+            <option value="2">中场</option>
+            <option value="3">后卫</option>
+            <option value="4">守门员</option>
+        </select>
+    </div>
+    <div>
+        <label>是否队务：</label>
+        <select name="manage">
+            <option value="n" selected="selected">no</option>
+            <option value="y">yes</option>
+        </select>
+    </div>
+    <div>
+        <label>队务级别：</label>
+        <select name="grade_manage">
+            <option value="1">领队</option>
+            <option value="2">教练</option>
+            <option value="3">队长</option>
+            <option value="4">副队长</option>
+            <option value="5">助理</option>
+            <option value="6" selected="selected">无</option>
+        </select>
+    </div>
+    <div>
+        <label>头像：<code>*只能上传jpg,png,gif格式</code></label>
+        <input name="gravatar" type="file"/>
+    </div>
+    <div>
+        <input type="submit" name="button" value="新增球员" class="btn btn-primary"/> |
+        <input type="button" onclick="history.go(-1);" value="返回" class="btn"/>
+    </div>
+</form>
+{% endblock %}
+

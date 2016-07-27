@@ -1,0 +1,29 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+<link rel="stylesheet" href="/static/bootstrap/css/bootstrap.css" type="text/css" >
+<link rel="stylesheet" href="/static/admin.css" type="text/css" >
+
+<script type="text/javascript" src="/static/bootstrap/js/jquery.js"></script>
+<script type="text/javascript" src="/static/bootstrap/js/bootstrap.min.js"></script>
+
+<title>管理后台</title>
+</head>
+<body>
+<div class="container">
+    {% include "admin_top.html"%} 
+    <hr />            
+    <div class="row">
+        <div class="span3">
+        {% include "admin_left.html"%}
+        </div>
+        <div class="span9">
+        {% block content %}  
+        {% endblock %}
+        </div>
+    </div>
+</div>
+</body>
+</html>

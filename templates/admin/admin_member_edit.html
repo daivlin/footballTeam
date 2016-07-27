@@ -1,0 +1,24 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<blockquote><h4>更新球员</h4></blockquote>
+<form method="post" action="/admin/member_edit" enctype="multipart/form-data">    
+    <div>
+        <label>姓名</label>
+        <input name="id" type="hidden" value={{ member["id"] }} />
+        <input name="name" type="text" value={{ member["name"] }} />
+    </div>
+    <div>
+        <label>头像名称<code>只能是拼音或数字</code></label>
+        <input name="header_name" type="text" value={{ member["header_name"] }} />
+    </div>
+    <div>
+        <label>头像：<code>*jpg/png/gif,150*130</code></label>
+        <input name="gravatar" type="file" />
+    </div>
+    <div>
+        <input type="submit" name="button" value="更新球员" class="btn btn-primary"/> |
+        <input type="button" onclick="history.go(-1);" value="返回" class="btn"/>
+    </div>
+</form>
+{% endblock %}
+

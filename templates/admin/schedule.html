@@ -1,0 +1,60 @@
+﻿{% extends "layout.html" %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="/static/cxcalendar/cxcalendar.css" />
+<script type="text/javascript" src="/static/cxcalendar/jquery-2.1.js"></script>
+<script type="text/javascript" src="/static/cxcalendar/cxcalendar.js"></script>
+<script type="text/javascript" src="/static/cxcalendar/cxcalendar.languages.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+    $('.date_slect').cxCalendar();
+
+});
+</script>
+
+
+
+
+
+<blockquote><h4>赛 程</h4></blockquote>
+    <form class="form-inline" action="?" method="get">
+    过滤时间:
+    <input type="text" class="date_slect" name="start_time" value="{{ start_time }}" > - 
+    <input type="text" class="date_slect" name="end_time" value="{{ end_time }}" > 
+    <button class="btn btn-primary">确定
+    </button>
+    </form>
+
+    
+{% if schedule %}
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th width="100">时间</th>
+            <th width="150">球队</th>
+            <th width="100">衣服</th>
+            <th width="130">地点</th>
+            <th>类别</th>
+            <th>结果</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in schedule %}
+            <tr>
+                <td>{{ i["match_time"] }}</td>
+                <td>{{ i["teams"] }}</td>
+                <td>{{ i["clothes"] }}</td>
+                <td>{{ i["location"] }}</td>
+                <td>{{ i["match_type"] }}</td>
+                <td>{{ "<a href='/schedule_detail?id=%s'>"%i["id"]+i["match_result"]+"</a>" if i["match_result"] else "<span class='label label-info'>未开始</span>" }}</td>
+            </tr>
+            
+        {% endfor %}
+    </tbody>        
+</table>
+{% else %}
+    <div class="alert alert-info">该日期没有比赛</div>
+{% endif %}
+
+{% endblock %}
+

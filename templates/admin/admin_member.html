@@ -1,0 +1,29 @@
+{% extends "admin_base.html" %}
+{% block content %}
+<blockquote><h4>球员管理</h4></blockquote>
+
+<table class="table table-hover">
+        <thead>
+        <tr>
+                <th width="30">球衣号码</th>
+                <th>姓名</th>
+                <th>年龄</th>
+                <th>身高</th>
+                <th>电话</th>
+                <th>位置</th>
+                <th width="30">管理</th>
+        </tr>
+        </thead>
+        {% for i in member %}
+                <tr>
+                        <td>{{ i["number"] }}</td>
+                        <td>{{ i["name"] }}</td>
+                        <td>{{ i["age"] }}</td>
+                        <td>{{ i["height"] }}</td>
+                        <td>{{ i['tel'] }}</td>
+                        <td>{{ grade_dict[i['grade']] }}</td>
+                        <td><a href="/admin/member_edit?id={{ i['id'] }}"><i class="icon-edit"></i></a></td>
+                </tr>
+        {% endfor %}
+</table>
+{% endblock %}
